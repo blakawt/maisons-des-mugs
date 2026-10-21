@@ -1,9 +1,11 @@
-// Snowfall
+// Snowfall (lightweight, disabled for reduced motion)
 (function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const canvas = document.getElementById('snow');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let w, h, flakes = [];
-  const count = 120;
+  const count = window.matchMedia('(max-width: 768px)').matches ? 50 : 110;
   function resize() {
     w = canvas.width = window.innerWidth;
     h = canvas.height = window.innerHeight;
@@ -46,16 +48,9 @@
   resize(); init(); draw();
 })();
 
-// Cart (localStorage demo)
-const cartKey = 'noelshop_cart';
-function getCart() { try { return JSON.parse(localStorage.getItem(cartKey)) || []; } catch { return []; } }
-function setCart(c) { localStorage.setItem(cartKey, JSON.stringify(c)); updateCartCount(); }
-function updateCartCount() {
-  const c = getCart();
-  const n = c.reduce((s, i) => s + i.qty, 0);
-  const el = document.getElementById('cart-count');
-  if (el) el.textContent = n;
-}
+// Shopify redirect (no cart)
+const SHOP_URL = 'https://s5q00i-m7.myshopify.com';
+
 function showToast(msg) {
   let t = document.querySelector('.toast');
   if (!t) { t = document.createElement('div'); t.className = 'toast'; document.body.appendChild(t); }
@@ -65,27 +60,81 @@ function showToast(msg) {
   t._t = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+function clampQuantity(value) {
+  let qty = parseInt(value, 10);
+  if (!Number.isInteger(qty) || qty < 1) qty = 1;
+  if (qty > 99) qty = 99;
+  return qty;
+}
+
+function redirectToShopify() {
+  const input = document.getElementById('qty');
+  const qty = clampQuantity(input ? input.value : 1);
+  if (input) input.value = String(qty);
+  try {
+    const url = new URL(SHOP_URL);
+    url.searchParams.set('quantity', String(qty));
+    window.location.assign(url.toString());
+  } catch (e) {
+    window.location.assign(SHOP_URL);
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-  updateCartCount();
   const year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
-  const addBtn = document.getElementById('add-to-cart');
-  if (addBtn) {
-    addBtn.addEventListener('click', () => {
-      const qty = Math.max(1, parseInt(document.getElementById('qty').value || '1', 10));
-      const cart = getCart();
-      const existing = cart.find(i => i.id === 'mug-noel');
-      if (existing) existing.qty += qty; else cart.push({ id: 'mug-noel', name: 'Tasse de Noël 350 ml', price: 4.09, qty });
-      setCart(cart);
-      showToast('Ajouté au panier 🎁');
-    });
-  }
+  const buyBtn = document.getElementById('buy-btn');
+  if (buyBtn) buyBtn.addEventListener('click', redirectToShopify);
 
   const buyNow = document.getElementById('buy-now');
   if (buyNow) {
     buyNow.addEventListener('click', (e) => {
-      // smooth scroll handled by css; just focus qty
+      // smooth scroll to buy section is handled by CSS; keep default
+    });
+  }
+
+  const qtyInput = document.getElementById('qty');
+  if (qtyInput) {
+    qtyInput.addEventListener('change', () => {
+      qtyInput.value = String(clampQuantity(qtyInput.value));
+    });
+    qtyInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        redirectToShopify();
+      }
+    });
+  }
+
+  // Mobile menu
+  const menuToggle = document.getElementById('menu-toggle');
+  const siteNav = document.getElementById('site-nav');
+  if (menuToggle && siteNav) {
+    menuToggle.addEventListener('click', () => {
+      const open = siteNav.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.textContent = open ? '✕' : '☰';
+    });
+    siteNav.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        siteNav.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
+    });
+  }
+
+  // Back to top
+  const backToTop = document.getElementById('back-to-top');
+  if (backToTop) {
+    const onScroll = () => {
+      backToTop.classList.toggle('show', window.scrollY > 500);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
 });
