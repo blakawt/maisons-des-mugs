@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tasse de Noël - Mug en céramique 350 ml, motif village hivernal</title>
+  <meta name="description" content="Tasse en céramique de Noël 350 ml, motif village hivernal. Le cadeau parfait pour les fêtes : maison, bureau, famille et amis." />
+  <meta property="og:title" content="Tasse de Noël - Mug en céramique 350 ml" />
+  <meta property="og:description" content="Tasse en céramique de Noël, 350 ml, motif village hivernal. Idéale pour la maison, le bureau et les cadeaux de Noël." />
+  <meta property="og:image" content="./assets/img/product-1.png" />
+  <meta name="theme-color" content="#c0392b" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎄</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <!-- Snowfall canvas -->
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <!-- Christmas lights -->
+  <div class="lights" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="brand-icon">🎄</span>
+        <span class="brand-text">Noël<span class="brand-accent">Shop</span></span>
+      </a>
+      <nav>
+        <a href="#produit">Produit</a>
+        <a href="#galerie">Galerie</a>
+        <a href="#avantages">Avantages</a>
+        <a href="#avis">Avis</a>
+      </nav>
+      <a class="cart-btn" href="#acheter" aria-label="Panier">
+        🛒 <span id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <span class="badge">🎁 Édition limitée de Noël</span>
+          <h1>Tasse en céramique de Noël<br /><span class="highlight">350 ml</span> — motif village hivernal</h1>
+          <p class="hero-sub">La tasse parfaite pour savourer votre chocolat chaud, café ou thé au coin du feu. Un cadeau chaleureux pour la maison, le bureau, la famille et les amis.</p>
+          <div class="price-block">
+            <span class="price">29.90 €</span>
+            <span class="price-old">44,85 €</span>
+            <span class="price-save">-50%</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#acheter" id="buy-now">Acheter maintenant</a>
+            <a class="btn btn-ghost" href="#galerie">Voir la galerie</a>
+          </div>
+          <ul class="hero-trust">
+            <li>✅ Céramique de qualité</li>
+            <li>✅ 350 ml</li>
+            <li>✅ Cadeau de Noël idéal</li>
+            <li>🚚 Livraison rapide</li>
+          </ul>
+        </div>
+        <div class="hero-image">
+          <div class="hero-card">
+            <img src="./assets/img/product-1.png" alt="Tasse de Noël en céramique 350 ml motif village hivernal" loading="eager" />
+            <div class="sparkle">✨</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product details -->
+    <section id="produit" class="section">
+      <div class="container">
+        <h2 class="section-title">Le produit</h2>
+        <p class="section-sub">Une tasse festive qui réchauffe les cœurs pendant les fêtes de fin d'année.</p>
+        <div class="details-grid">
+          <div class="detail">
+            <div class="detail-icon">☕</div>
+            <h3>Capacité 350 ml</h3>
+            <p>Parfaite pour votre café du matin, thé ou chocolat chaud.</p>
+          </div>
+          <div class="detail">
+            <div class="detail-icon">❄️</div>
+            <h3>Motif village hivernal</h3>
+            <p>Design de Noël charmant avec village enneigé et sapins.</p>
+          </div>
+          <div class="detail">
+            <div class="detail-icon">🏺</div>
+            <h3>Céramique durable</h3>
+            <p>Matériau robuste, finition lisse et agréable au toucher.</p>
+          </div>
+          <div class="detail">
+            <div class="detail-icon">🎁</div>
+            <h3>Cadeau parfait</h3>
+            <p>Idéal pour la famille, les amis, le bureau et la maison.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="galerie" class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">Galerie</h2>
+        <p class="section-sub">Découvrez la tasse sous tous les angles.</p>
+        <div class="gallery">
+          <figure class="gallery-item large"><img src="./assets/img/product-1.png" alt="Vue principale" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="./assets/img/product-2.png" alt="Vue 2" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="./assets/img/product-3.jpg" alt="Vue 3" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="./assets/img/product-4.jpg" alt="Vue 4" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="./assets/img/product-5.jpg" alt="Vue 5" loading="lazy" /></figure>
+          <figure class="gallery-item"><img src="./assets/img/product-6.jpg" alt="Vue 6" loading="lazy" /></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advantages -->
+    <section id="avantages" class="section">
+      <div class="container">
+        <h2 class="section-title">Pourquoi choisir cette tasse ?</h2>
+        <div class="adv-grid">
+          <div class="adv">
+            <h3>🎄 Ambiance festive</h3>
+            <p>Apportez la magie de Noël à chaque gorgée.</p>
+          </div>
+          <div class="adv">
+            <h3>🧼 Facile à entretenir</h3>
+            <p>Compatible lave-vaisselle et micro-ondes (selon usage).</p>
+          </div>
+          <div class="adv">
+            <h3>📦 Emballage soigné</h3>
+            <p>Livraison protégée pour arriver intacte chez vous.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    
+
+    <!-- Buy section -->
+    <section id="acheter" class="section buy-section">
+      <div class="container buy-grid">
+        <div class="buy-image">
+          <img src="./assets/img/product-1.png" alt="Tasse de Noël" loading="lazy" />
+        </div>
+        <div class="buy-info">
+          <h2>Commander votre tasse de Noël</h2>
+          <p class="buy-desc">Tasse en céramique de Noël, 350 ml, motif village hivernal. Cadeau idéal pour la maison, le bureau, la famille et les amis.</p>
+          <div class="price-block large">
+            <span class="price">4,09 €</span>
+            <span class="price-old">8,18 €</span>
+            <span class="price-save">-50%</span>
+          </div>
+          <div class="qty-row">
+            <label for="qty">Quantité</label>
+            <input type="number" id="qty" min="1" value="1" />
+          </div>
+          <div class="buy-actions">
+            <button class="btn btn-primary" id="add-to-cart">Ajouter au panier</button>
+            <a class="btn btn-buy" id="checkout-btn" href="https://shopify.com/store/s5q00i-m7" target="_blank" rel="noopener noreferrer">Acheter sur Shopify</a>
+          </div>
+          <p class="buy-note">🔒 Paiement sécurisé via Shopify. Retours possibles sous 15 jours.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand"><span class="brand-icon">🎄</span> Noël<span class="brand-accent">Shop</span></div>
+        <p>Des cadeaux de Noël qui réchauffent les cœurs.</p>
+      </div>
+      <div>
+        <h4>Liens</h4>
+        <a href="#produit">Produit</a><br />
+        <a href="#galerie">Galerie</a><br />
+        <a href="#acheter">Acheter</a>
+      </div>
+      <div>
+        <h4>Infos</h4>
+        <p>Produit vendu via Shopify.<br />© <span id="year"></span> La maison des mugs. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/main.js"></script>
+</body>
+</html>
